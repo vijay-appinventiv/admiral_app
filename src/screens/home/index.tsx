@@ -41,10 +41,10 @@ export default function Home() {
     );
   }
 
-  const renderNewReleases = () => {
+  const renderMovies = (title: string) => {
     return (
       <React.Fragment>
-        <Text style={styles.heading}>{"New Relesae"}</Text>
+        <Text style={styles.heading}>{title}</Text>
         <FlatList
           data={movies_data}
           horizontal={true}
@@ -68,7 +68,8 @@ export default function Home() {
     >
       <Header />
       {renderCinemas()}
-      {renderNewReleases()}
+      {renderMovies("New Relesae")}
+      {renderMovies("You might want to see this")}
       {loading && <Loader />}
     </ScrollView>
   );
