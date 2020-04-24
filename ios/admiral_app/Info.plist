@@ -57,6 +57,7 @@
 	<array>
 		<string>MaterialIcons.ttf</string>
 		<string>FontAwesome.ttf</string>
+		<string>FontAwesome5_Regular.ttf</string>
 	</array>
 </dict>
 </plist>
