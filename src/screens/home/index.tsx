@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { StyleSheet, Text, ScrollView, FlatList } from 'react-native';
+import { StyleSheet, Text, ScrollView, FlatList, View } from 'react-native';
 
 //custom imports below
 import Header from '../../components/header';
@@ -61,17 +61,20 @@ export default function Home() {
   }
 
   return (
-    <ScrollView
-      bounces={false}
-      style={styles.container}
-      showsVerticalScrollIndicator={false}
-    >
+    <View style={styles.container}>
       <Header />
-      {renderCinemas()}
-      {renderMovies("New Relesae")}
-      {renderMovies("You might want to see this")}
+      <ScrollView
+        bounces={false}
+        style={styles.container}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 100 }}
+      >
+        {renderCinemas()}
+        {renderMovies("New Relesae")}
+        {renderMovies("You might want to see this")}
+      </ScrollView>
       {loading && <Loader />}
-    </ScrollView>
+    </View>
   );
 }
 
