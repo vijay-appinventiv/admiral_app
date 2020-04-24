@@ -1,5 +1,5 @@
 const ActionNames = {
-  GET_DATA: 'get_data',
+  UPDATE_MOVIES_DATA: 'update_movies_data',
 }
 
 export default ActionNames;

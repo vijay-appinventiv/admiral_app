@@ -1,16 +1,16 @@
 import React from 'react';
-import { Fold } from 'react-native-animated-spinkit';
+import { Swing } from 'react-native-animated-spinkit';
 import { View, StyleSheet, Dimensions } from 'react-native';
 
 //custom imports below
-import Colors from 'src/utils/colors';
+import Colors from '../utils/colors';
 
 const { width, height } = Dimensions.get('window');
 
 export default function Loader() {
   return (
     <View style={styles.container}>
-      <Fold color={Colors.APP_COLOR} />
+      <Swing size={150} color={Colors.APP_COLOR} />
     </View>
   );
 }
