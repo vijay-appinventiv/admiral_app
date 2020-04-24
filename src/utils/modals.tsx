@@ -17,9 +17,9 @@ class Movie {
 
 class MoviesList {
   page: number = 1;
-  movies: Movie[] = [];
   total_pages: number = 0;
   loading: boolean = false;
+  movies_data: Movie[] = [];
 }
 
 class ReducersModal {

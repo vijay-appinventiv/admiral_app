@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { View, StyleSheet, Text, ScrollView, FlatList } from 'react-native';
+import { StyleSheet, Text, ScrollView, FlatList } from 'react-native';
 
 //custom imports below
 import { getMovies } from './action';
@@ -12,7 +12,7 @@ import CinemaCard from '../../components/cinemaCard';
 
 export default function Home() {
   const dispatch = useDispatch();
-  const { loading, movies } = useSelector((state: ReducersModal) => state.moviesReducer);
+  const { loading, movies_data } = useSelector((state: ReducersModal) => state.moviesReducer);
 
   useEffect(() => {
     dispatch(getMovies());

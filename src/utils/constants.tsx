@@ -35,5 +35,5 @@ export default {
   axios: $axios,
   base_image_url,
   initialLoading: 1,
-  api_key: 'df9b55dfc4d19cfda75f35a1505c8d36',
+  api_key: 'b1df9279ba09ca2a8bd01d18b97d2f3f',
 }

@@ -3,6 +3,7 @@ import { Alert } from "react-native";
 //custom imports below
 import getApiCall from "../../utils/api";
 import constants from "../../utils/constants";
+import { MoviesList } from "../../utils/modals";
 import ActionNames from "../../utils/actionNames";
 
 export const updateLoading = (loading: boolean) => ({
@@ -12,7 +13,7 @@ export const updateLoading = (loading: boolean) => ({
 
 export const getMovies = (isLoadMore: boolean = false) => {
   return (dispatch: Function, getState: Function) => {
-    let { page, movies } = getState().moviesReducer;
+    let { page, movies_data }: MoviesList = getState().moviesReducer;
     let endPoint = `discover/movie?api_key=${constants.api_key}&page=${page}`;
 
     dispatch(updateLoading(true));
@@ -24,13 +25,13 @@ export const getMovies = (isLoadMore: boolean = false) => {
         if (response.status) {
           let { data } = response, { results, total_pages } = data;
           if (isLoadMore) {
-            results = movies.concat(results);
+            results = movies_data.concat(results);
           }
           dispatch({
             type: ActionNames.UPDATE_MOVIES_DATA,
             payload: {
               page: page + 1,
-              movies: results,
+              movies_data: results,
               total_pages: total_pages,
             }
           });
