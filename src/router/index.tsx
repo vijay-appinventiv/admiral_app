@@ -11,8 +11,8 @@ import Home from '../screens/home';
 import Colors from '../utils/colors';
 import { vw } from '../utils/dimensions';
 
-const Tab = createBottomTabNavigator();
 const HomeStack = createStackNavigator();
+const { Navigator, Screen } = createBottomTabNavigator();
 
 const HomeNavigator = ({ navigation, route }: any) => {
   return (
@@ -35,56 +35,60 @@ const HomeNavigator = ({ navigation, route }: any) => {
 export default function Route() {
   return (
     <NavigationContainer>
-      <Tab.Navigator
+      <Navigator
         tabBarOptions={{
           activeTintColor: Colors.APP_COLOR
         }}
       >
-        <Tab.Screen
+        <Screen
           name="Home"
           component={HomeNavigator}
           options={{
             tabBarLabel: 'HOME',
             tabBarIcon: ({ focused, size }) =>
-              <MaterialIcons name="home" size={size} />
+              <MaterialIcons name="home" size={size}
+                style={{ color: focused ? Colors.APP_COLOR : Colors.GREY }} />
           }}
         />
-        <Tab.Screen name="Tickets"
+        <Screen name="Tickets"
           component={HomeNavigator}
           options={{
             tabBarLabel: 'Tickets',
             tabBarIcon: ({ focused, size }) =>
-              <FontAwesome name="ticket" size={size} />
+              <FontAwesome name="ticket" size={size}
+                style={{ color: focused ? Colors.APP_COLOR : Colors.GREY }} />
           }}
         />
-        <Tab.Screen name="Overlay2"
+        <Screen name="hoverBtn"
           component={Home}
           options={{
             tabBarButton: () => (
               <View style={styles.tabBarButtonContainer}>
-                <FontAwesome name="ticket" size={vw(60)} />
+                <FontAwesome name="ticket" size={vw(30)} style={{ top: 40 }} />
               </View>)
           }}
         />
-        <Tab.Screen
+        <Screen
           name="Movies"
           component={HomeNavigator}
           options={{
             tabBarLabel: 'Movies',
             tabBarIcon: ({ focused, size }) =>
-              <FontAwesome name="play-circle" size={size} />
+              <FontAwesome name="play-circle" size={size}
+                style={{ color: focused ? Colors.APP_COLOR : Colors.GREY }} />
           }}
         />
-        <Tab.Screen
+        <Screen
           name="Cinemas"
           component={HomeNavigator}
           options={{
             tabBarLabel: 'Cinemas',
             tabBarIcon: ({ focused, size }) =>
-              <MaterialIcons name="movie" size={size} />
+              <MaterialIcons name="movie" size={size}
+                style={{ color: focused ? Colors.APP_COLOR : Colors.GREY }} />
           }}
         />
-      </Tab.Navigator>
+      </Navigator>
     </NavigationContainer>
   );
 }
@@ -99,7 +103,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderBottomWidth: 50,
     justifyContent: 'flex-end',
-    borderBottomColor: 'transparent',
+    borderBottomColor: Colors.TRANSPARENT_01,
   }
 })
 
