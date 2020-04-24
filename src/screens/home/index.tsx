@@ -5,11 +5,11 @@ import { StyleSheet, Text, ScrollView, FlatList, View } from 'react-native';
 //custom imports below
 import Header from '../../components/header';
 import Loader from '../../components/loader';
-import { getMoviesAndGenres, updateLoading } from './action';
 import constants from '../../utils/constants';
 import { ReducersModal } from '../../utils/modals';
 import CinemaCard from '../../components/cinemaCard';
 import ReleasesCard from '../../components/releasesCard';
+import { getMoviesAndGenres, updateLoading } from './action';
 
 export default function Home() {
   const dispatch = useDispatch();
