@@ -3,19 +3,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import { StyleSheet, Text, ScrollView, FlatList } from 'react-native';
 
 //custom imports below
-import { getMovies } from './action';
 import Header from '../../components/header';
 import Loader from '../../components/loader';
+import { getMoviesAndGenres } from './action';
 import constants from '../../utils/constants';
 import { ReducersModal } from '../../utils/modals';
 import CinemaCard from '../../components/cinemaCard';
+import ReleasesCard from '../../components/releasesCard';
 
 export default function Home() {
   const dispatch = useDispatch();
   const { loading, movies_data } = useSelector((state: ReducersModal) => state.moviesReducer);
 
   useEffect(() => {
-    dispatch(getMovies());
+    dispatch(getMoviesAndGenres());
   }, [])
 
   /**
@@ -28,10 +29,29 @@ export default function Home() {
         <FlatList
           data={constants.cinemas_data}
           horizontal={true}
-          keyExtractor={(item: any, index: any) => index.toString()}
+          keyExtractor={(item: any) => item.id}
           showsHorizontalScrollIndicator={false}
           renderItem={({ item }) => (
             <CinemaCard
+              {...item}
+            />
+          )}
+        />
+      </React.Fragment>
+    );
+  }
+
+  const renderNewReleases = () => {
+    return (
+      <React.Fragment>
+        <Text style={styles.heading}>{"New Relesae"}</Text>
+        <FlatList
+          data={movies_data}
+          horizontal={true}
+          keyExtractor={(item: any, index: any) => index.toString()}
+          showsHorizontalScrollIndicator={false}
+          renderItem={({ item }) => (
+            <ReleasesCard
               {...item}
             />
           )}
@@ -48,6 +68,7 @@ export default function Home() {
     >
       <Header />
       {renderCinemas()}
+      {renderNewReleases()}
       {loading && <Loader />}
     </ScrollView>
   );
@@ -61,7 +82,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginTop: 20,
     marginBottom: 20,
-    fontWeight: "600",
+    fontWeight: "bold",
     paddingHorizontal: 10
   }
 })

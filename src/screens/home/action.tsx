@@ -11,6 +11,15 @@ export const updateLoading = (loading: boolean) => ({
   type: ActionNames.UPDATE_MOVIES_DATA,
 })
 
+export const getMoviesAndGenres = () => {
+  return (dispatch: Function) => {
+    dispatch(getGenres());
+    setTimeout(() => {
+      dispatch(getMovies());
+    }, 1500);
+  }
+}
+
 export const getMovies = (isLoadMore: boolean = false) => {
   return (dispatch: Function, getState: Function) => {
     let { page, movies_data }: MoviesList = getState().moviesReducer;
@@ -21,7 +30,6 @@ export const getMovies = (isLoadMore: boolean = false) => {
       endPoint,
       (response: any) => {
         dispatch(updateLoading(false));
-        console.warn("response", response)
         if (response.status) {
           let { data } = response, { results, total_pages } = data;
           if (isLoadMore) {
@@ -43,6 +51,30 @@ export const getMovies = (isLoadMore: boolean = false) => {
         let { data } = error;
         dispatch(updateLoading(false));
         Alert.alert("Admiral_APP_ERROR", data.message);
+      },
+    );
+  };
+};
+
+export const getGenres = () => {
+  return (dispatch: Function) => {
+    let endPoint = `genre/movie/list?api_key=${constants.api_key}&language=en-US`;
+    getApiCall(
+      endPoint,
+      (response: any) => {
+        if (response.status) {
+          let { data } = response, { genres } = data;
+          dispatch({
+            payload: { genres_list: genres },
+            type: ActionNames.UPDATE_MOVIES_DATA,
+          });
+        } else {
+          console.log("Can't get genres right now")
+        }
+      },
+      (error: any) => {
+        let { data } = error;
+        console.log("Admiral_APP_ERROR", data.message);
       },
     );
   };
