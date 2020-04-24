@@ -16,19 +16,19 @@ const $axios = axios.create({
 const base_image_url = "http://image.tmdb.org/t/p/w200/";
 
 const cinemas_data = [{
-  id: 1,
+  id: "1",
   title: "IOI CITY MALL",
   img_url: 'https://tse4.mm.bing.net/th?id=OIP.woZHnRozIIGD3Z44zk2qBAHaE7&pid=Api',
 }, {
-  id: 2,
+  id: "2",
   title: "PAVILLION",
   img_url: 'https://tse3.mm.bing.net/th?id=OIP.SvY4iYNMzSENmA_ie7r1pgHaE7&pid=Api',
 }, {
-  id: 3,
+  id: "3",
   title: "NU SENTAL",
   img_url: 'https://tse2.mm.bing.net/th?id=OIP.ZmoAj5IdNfToFJP0QpiNjQHaE8&pid=Api',
 }, {
-  id: 4,
+  id: "4",
   title: "OTHER",
   img_url: 'https://tse1.mm.bing.net/th?id=OIP.KyXH2_9oYkQx_gcN3TlqrwHaE8&pid=Api',
 }]
