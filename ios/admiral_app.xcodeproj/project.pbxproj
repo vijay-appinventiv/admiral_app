@@ -61,6 +61,7 @@
 		83425DEC6C7CDF4995E025F6 /* libPods-admiral_app.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-admiral_app.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8401171D2452E94D008B1E33 /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialIcons.ttf; sourceTree = "<group>"; };
 		8401171E24530973008B1E33 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
+		8401171F24531178008B1E33 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
 		954448BBDF6526444B7BE159 /* Pods-admiral_app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-admiral_app.debug.xcconfig"; path = "Target Support Files/Pods-admiral_app/Pods-admiral_app.debug.xcconfig"; sourceTree = "<group>"; };
 		A3E73002BC931A2F749A7123 /* libPods-admiral_app-admiral_appTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-admiral_app-admiral_appTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4CF095749858775B8C29AC0 /* Pods-admiral_app-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-admiral_app-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-admiral_app-tvOSTests/Pods-admiral_app-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -188,6 +189,7 @@
 		8401171C2452E916008B1E33 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				8401171F24531178008B1E33 /* FontAwesome5_Regular.ttf */,
 				8401171E24530973008B1E33 /* FontAwesome.ttf */,
 				8401171D2452E94D008B1E33 /* MaterialIcons.ttf */,
 			);
