@@ -6,11 +6,18 @@ import constants from "../../utils/constants";
 import { MoviesList } from "../../utils/modals";
 import ActionNames from "../../utils/actionNames";
 
+/**
+ * action to update loading param to show and hide loader on screen
+ * @param loading 
+ */
 export const updateLoading = (loading: boolean) => ({
   payload: { loading },
   type: ActionNames.UPDATE_MOVIES_DATA,
 })
 
+/**
+ * function to dispatch actions to get genres and movies list
+ */
 export const getMoviesAndGenres = () => {
   return (dispatch: Function) => {
     dispatch(getGenres());
@@ -20,6 +27,10 @@ export const getMoviesAndGenres = () => {
   }
 }
 
+/**
+ * function to get movies list
+ * @param isLoadMore 
+ */
 export const getMovies = (isLoadMore: boolean = false) => {
   return (dispatch: Function, getState: Function) => {
     let { page, movies_data }: MoviesList = getState().moviesReducer;
@@ -56,6 +67,9 @@ export const getMovies = (isLoadMore: boolean = false) => {
   };
 };
 
+/**
+ * function to get genres list
+ */
 export const getGenres = () => {
   return (dispatch: Function) => {
     let endPoint = `genre/movie/list?api_key=${constants.api_key}&language=en-US`;

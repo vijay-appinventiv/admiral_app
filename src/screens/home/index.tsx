@@ -15,6 +15,9 @@ export default function Home() {
   const dispatch = useDispatch();
   const { loading, movies_data } = useSelector((state: ReducersModal) => state.moviesReducer);
 
+  /**
+   * function to start loading movies list
+   */
   useEffect(() => {
     dispatch(updateLoading(true));
     dispatch(getMoviesAndGenres());
@@ -42,6 +45,10 @@ export default function Home() {
     );
   }
 
+  /**
+   * function to render movies list with dynamic icons
+   * @param title 
+   */
   const renderMovies = (title: string) => {
     return (
       <React.Fragment>
