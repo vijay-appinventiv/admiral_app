@@ -4,6 +4,7 @@ import { View, Image, Text, StyleSheet } from 'react-native';
 
 //custom imports below
 import { vw } from '../utils/dimensions';
+import Rating from '../components/rating';
 import constants from '../utils/constants';
 import { ReducersModal } from '../utils/modals';
 
@@ -11,6 +12,10 @@ interface Props {
   title: string;
   poster_path: string;
   genre_ids: number[];
+}
+
+function generateRandomNumber(min: number, max: number) {
+  return Math.floor(Math.random() * (max - min) + min);
 }
 
 export default function ReleasesCard({ title, poster_path, genre_ids }: Props) {
@@ -30,9 +35,7 @@ export default function ReleasesCard({ title, poster_path, genre_ids }: Props) {
     <View style={styles.container}>
       <Image source={{ uri: imageSource }} style={styles.imageStyle} resizeMode="cover" />
       <Text numberOfLines={1} style={styles.subTitle}>{genre}</Text>
-      {/* <Rating
-        rating={2}
-      /> */}
+      <Rating rating={generateRandomNumber(1, 6)} />
       <Text numberOfLines={2} style={styles.title}>{title}</Text>
     </View>
   );
