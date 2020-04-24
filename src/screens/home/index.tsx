@@ -5,17 +5,18 @@ import { StyleSheet, Text, ScrollView, FlatList, View } from 'react-native';
 //custom imports below
 import Header from '../../components/header';
 import Loader from '../../components/loader';
-import { getMoviesAndGenres } from './action';
 import constants from '../../utils/constants';
 import { ReducersModal } from '../../utils/modals';
 import CinemaCard from '../../components/cinemaCard';
 import ReleasesCard from '../../components/releasesCard';
+import { getMoviesAndGenres, updateLoading } from './action';
 
 export default function Home() {
   const dispatch = useDispatch();
   const { loading, movies_data } = useSelector((state: ReducersModal) => state.moviesReducer);
 
   useEffect(() => {
+    dispatch(updateLoading(true));
     dispatch(getMoviesAndGenres());
   }, [])
 
@@ -63,17 +64,21 @@ export default function Home() {
   return (
     <View style={styles.container}>
       <Header />
-      <ScrollView
-        bounces={false}
-        style={styles.container}
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ paddingBottom: 100 }}
-      >
-        {renderCinemas()}
-        {renderMovies("New Relesae")}
-        {renderMovies("You might want to see this")}
-      </ScrollView>
-      {loading && <Loader />}
+      {
+        loading ?
+          <Loader />
+          :
+          <ScrollView
+            bounces={false}
+            style={styles.container}
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle={{ paddingBottom: 100 }}
+          >
+            {renderCinemas()}
+            {renderMovies("New Relesae")}
+            {renderMovies("You might want to see this")}
+          </ScrollView>
+      }
     </View>
   );
 }
