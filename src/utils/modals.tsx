@@ -15,10 +15,16 @@ class Movie {
   original_language: string = "";
 }
 
+class genre {
+  id: number = 0;
+  name: string = '';
+}
+
 class MoviesList {
   page: number = 1;
   total_pages: number = 0;
   loading: boolean = false;
+  genres_list: genre[] = [];
   movies_data: Movie[] = [];
 }
 
@@ -27,6 +33,7 @@ class ReducersModal {
 }
 
 export {
+  genre,
   Movie,
   MoviesList,
   ReducersModal
